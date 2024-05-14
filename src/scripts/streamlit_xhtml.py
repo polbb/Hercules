@@ -180,7 +180,7 @@ def streamlit_xhtml(company_number):
 
         with col2:
             st.markdown(
-                f"<span style='color: green; font-size: 30px;'>{dummy_delta}</span>",
+                f"<span style='color: green; font-size: 80px;'>{dummy_delta}</span>",
                 unsafe_allow_html=True)
         
 
