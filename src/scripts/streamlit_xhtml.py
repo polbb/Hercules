@@ -1,30 +1,23 @@
-import streamlit as st
+import plotly.express as px
+
 from agents import *
+from benford import *
 from database import *
 from document_retrieval import get_company_name
 from helper_functions import make_dataframe
-import matplotlib.pyplot as plt
-import plotly.express as px
 from sentiment import sentiment_analysis
-from benford import *
 
 
 def streamlit_xhtml(company_number):
-
-
-
     # DISPLAY COMPANY INFO
-    name_str = get_company_name(company_number) # Todo retrieve from DB instead
-    
+    name_str = get_company_name(company_number)  # Todo retrieve from DB instead
+
     with st.sidebar:
         st.title('Analysis by ArgoX.ai')
         st.divider()
 
     st.subheader(f"Target Company: {name_str}")
     st.divider()
-
-
-    
 
     # GET FINANCIAL INDICATORS
     left = 25
@@ -115,12 +108,11 @@ def streamlit_xhtml(company_number):
         st.text(f"{'Cash & Equivalents:':<{left}} {format_currency(cash_and_cash_equivalents):>{right}}")
 
     st.divider()
-    
+
     ########################################
     # GET SIC
     ########################################
     sic = get_sic_code(company_number)
-
 
     placeholder = st.empty()
     with placeholder.container():
@@ -146,22 +138,24 @@ def streamlit_xhtml(company_number):
             st.warning(f"An error occurred while retrieving SME group: {e}")
             result = None
             return result
-        
 
         if result is not None:
             n = len(result)
 
             dataframe = make_dataframe(result)
 
-            dataframe.drop(columns=['gics', 'gics_timestamp', 'non_micro'], inplace=True) # REMOVE THIS CODE AFTER CTEATING GIOCS TABLE!!!
+            dataframe.drop(columns=['gics', 'gics_timestamp', 'non_micro'],
+                           inplace=True)  # REMOVE THIS CODE AFTER CTEATING GIOCS TABLE!!!
 
-            dataframe = calculate_financial_ratios(dataframe) #add ratios columns
+            dataframe = calculate_financial_ratios(dataframe)  # add ratios columns
 
-            statistics = calculate_statistics(dataframe) # Returns a dictionary
+            statistics = calculate_statistics(dataframe)  # Returns a dictionary
 
-            st.markdown(f"<span style='color: green; font-size: 30px;'>Comparison Research Set (Comps) = {n} SME Companies</span>", unsafe_allow_html=True)
+            st.markdown(
+                f"<span style='color: green; font-size: 30px;'>Comparison Research Set (Comps) = {n} SME Companies</span>",
+                unsafe_allow_html=True)
 
-
+    st.container('Business Operation Score', border=True)
 
     tab1, tab2, tab3, tab4 = st.tabs(["Analysis", "Data", "Plots", "Veracity"])
 
@@ -169,12 +163,12 @@ def streamlit_xhtml(company_number):
         # Benford's Law application with frequencies in percentage
         first_digit_frequencies = benford(company_number)
         first_digit_df = pd.DataFrame(list(first_digit_frequencies.items()), columns=['Modulus', 'Frequency (%)'])
-        
+
         # Display the frequencies in a dataframe with the index hidden
         st.dataframe(first_digit_df, hide_index=True)
 
     with tab1:
-            
+
         if 'dataframe' in locals() or 'dataframe' in globals():
             with tab2:
                 st.write(dataframe)
@@ -183,19 +177,19 @@ def streamlit_xhtml(company_number):
             with tab3:
                 required_columns = ['wc_ratio', 'quick_ratio', 'itr_ratio', 'wr_score', 'cash_ratio']
                 numeric_df = dataframe[required_columns].apply(pd.to_numeric, errors='coerce')
-                
+
                 for column in required_columns:
                     q1 = numeric_df[column].quantile(0.25)
                     q3 = numeric_df[column].quantile(0.75)
                     iqr = q3 - q1
                     lower_fence = q1 - 1.5 * iqr
                     upper_fence = q3 + 1.5 * iqr
-                    
-                    filtered_df = numeric_df[column][(numeric_df[column] >= lower_fence) & (numeric_df[column] <= upper_fence)]
-                    
+
+                    filtered_df = numeric_df[column][
+                        (numeric_df[column] >= lower_fence) & (numeric_df[column] <= upper_fence)]
+
                     fig = px.box(filtered_df, y=column, width=300)  # Adjusted width to make plots narrower
                     st.plotly_chart(fig)
-
 
         if stocks and cogs:
             with st.spinner("Calculating Inventory Turns Ratio..."):
@@ -214,7 +208,7 @@ def streamlit_xhtml(company_number):
                 except Exception as e:
                     st.write(f"Error occurred: {e}")
 
-            # with st.spinner("Calculating Gap Index..."):
+                # with st.spinner("Calculating Gap Index..."):
                 pass
                 # try:
                 #     if wrscore == 0:
@@ -256,12 +250,10 @@ def streamlit_xhtml(company_number):
 
                 except Exception as e:
                     st.write(f"Error occurred during division: {e}")
-        
 
         ########################################
         # display ratios
         ########################################
-
 
         # ITR
         if 'itr_ratio' in locals() or 'itr_ratio' in globals():
@@ -270,7 +262,7 @@ def streamlit_xhtml(company_number):
                 display_metrics(name_str, itr_ratio, statistics['itr_ratio'])
         else:
             st.warning("Inventory Turns Ratio is not available or is null.")
-        
+
         # WORKING CAPITAL
         if 'wc_ratio' in locals() or 'wc_ratio' in globals():
             with st.container(border=True):
@@ -278,7 +270,7 @@ def streamlit_xhtml(company_number):
                 display_metrics(name_str, wc_ratio, statistics['wc_ratio'])
         else:
             st.warning("Working Capital Ratio is not available or is null.")
-        
+
         # QUICK RATIO
         if 'quick_ratio' in locals() or 'quick_ratio' in globals():
             with st.container(border=True):
@@ -286,7 +278,7 @@ def streamlit_xhtml(company_number):
                 display_metrics(name_str, quick_ratio, statistics['quick_ratio'])
         else:
             st.warning("Quick Ratio is not available or is null.")
-        
+
         # Cash Ratio
         if 'cash_ratio' in locals() or 'cash_ratio' in globals():
             with st.container(border=True):
@@ -305,11 +297,11 @@ def streamlit_xhtml(company_number):
 
         # GAP INDEX
         # with st.container(border=True):
-            # st.header('Gap Index')
-            # if itr_ratio and wrscore and gap_index:
-            #     display_metrics(name_str, gap_index, statistics['gap_index'])
-            # else:
-            #     st.warning("Error: Please start the process again")
+        # st.header('Gap Index')
+        # if itr_ratio and wrscore and gap_index:
+        #     display_metrics(name_str, gap_index, statistics['gap_index'])
+        # else:
+        #     st.warning("Error: Please start the process again")
 
         # st.text('Code Frozen 10:33 2024.02.13')
 
@@ -330,7 +322,6 @@ def streamlit_xhtml(company_number):
 
         st.title('Comparative Analysis')
 
-
         analyse_metrics(
             companyID=company_number,
             metrics=dataframe.loc[company_number],
@@ -338,10 +329,7 @@ def streamlit_xhtml(company_number):
             stats=statistics
             # stats=statistics['itr_ratio']
         )
-        
+
         # save file to db
 
-
-
     # st.text('Code Frozen 09:50 2024.02.16')
-    
