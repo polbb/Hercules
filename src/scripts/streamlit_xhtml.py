@@ -207,12 +207,8 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
         # st.header('Business Operations Score')
         st.markdown(
-                f"<span style='color: white; font-size: 60px;'>Chart</span>",
+                f"<span style='color: white; font-size: 60px;'>Char 2</span>",
                 unsafe_allow_html=True)
-        
-        # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
-
-        st.area_chart(dataframe)
         
 
         # Add histogram data
