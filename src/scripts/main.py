@@ -19,41 +19,35 @@ from database import *
 
 # # BELOW IS FOR STREAMLIT DEPLOYMENT
 # client = OpenAI(api_key=st.secrets.openai)
-with open( "src/scripts/style.css" ) as css:
-    st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
-    
+with open("src/scripts/style.css") as css:
+    st.markdown(f'<style>{css.read()}</style>', unsafe_allow_html=True)
 
 # st. set_page_config(layout="wide")
 # title
 st.title("ArgoXai")
-st.subheader("HERCULES - Contextual Financial Reviewer (Release G2)")
+st.subheader("HERCULES - Contextual Financial Reviewer (Development G4)")
 
-
-col1, col2, col3, c4, c5, c6, c7 ,c8 = st.columns([3,3,1,1,1,1,1,1])
+col1, col2, col3, c4, c5, c6, c7, c8 = st.columns([3, 3, 1, 1, 1, 1, 1, 1])
 company_number = col1.text_input("Enter the company number")
 iterations = col2.number_input("How many review vectors?", value=1)
 
-
-
 calculate_ratio = st.button("Start Analysis")
-
 
 if calculate_ratio:  # calc ratio button pressed
 
-    company_exists = check_company_profile_exists(company_number) #checking DB
+    company_exists = check_company_profile_exists(company_number)  # checking DB
 
-    if company_exists:    
+    if company_exists:
         # CHECK IF LATEST ACC HAS IXBRL
-        has_xhtml = check_for_xhtml_and_pdf(company_number) # todo change to check DB
+        has_xhtml = check_for_xhtml_and_pdf(company_number)  # todo change to check DB
 
         # IF IX SAVE BOTH, IF NOT SAVE PDF
-        if has_xhtml:  
-            
+        if has_xhtml:
+
             streamlit_xhtml(company_number)
 
-            
         else:
-            # # Below is the porcess of gathering pdf data and using GPT agents
+            # # Below is the process of gathering pdf data and using GPT agents
             # pdf_file_path, date_str, name_str = download_pdf(company_number)
             # streamlit_pdf(client, iterations, pdf_file_path, date_str, name_str)
             name_str = get_company_name(company_number)
