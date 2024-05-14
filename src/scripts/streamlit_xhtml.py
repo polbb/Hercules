@@ -152,7 +152,7 @@ def streamlit_xhtml(company_number):
             statistics = calculate_statistics(dataframe)  # Returns a dictionary
 
             st.markdown(
-                f"<span style='color: green; font-size: 30px;'>Comparison Research Set (Comps) = {n} SME Companies</span>",
+                f"<span style='color: green; font-size: 25px;'>Comparison Research Set (Comps) = {n} SME Companies</span>",
                 unsafe_allow_html=True)
 
 
@@ -161,6 +161,7 @@ def streamlit_xhtml(company_number):
     ########################################
     st.divider()
     dummy_value = 250
+    dummy_delta = '⬆︎5%'
     with st.container(border=True):
         # st.header('Business Operations Score')
         st.markdown(
@@ -170,6 +171,10 @@ def streamlit_xhtml(company_number):
         # st.metric('BOS', 250, delta=30)
         st.markdown(
                 f"<span style='color: white; font-size: 80px;'>{dummy_value}</span>",
+                unsafe_allow_html=True)
+        
+        st.markdown(
+                f"<span style='color: green; font-size: 80px;'>{dummy_delta}</span>",
                 unsafe_allow_html=True)
         
 
