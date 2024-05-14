@@ -236,11 +236,11 @@ def streamlit_xhtml(company_number):
         
         fig = px.scatter(
             dataframe,
-            x="gdpPercap",
-            y="lifeExp",
-            size="pop",
-            color="continent",
-            hover_name="country",
+            x="turnover",
+            y="wc_ratio",
+            size="total_assets",
+            color="cash_ratio",
+            hover_name="companyID",
             log_x=True,
             size_max=60,
         )
