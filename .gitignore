@@ -167,24 +167,3 @@ cython_debug/
 # Below are the template github ignored files
 /src/notes.txt
 /src/scripts/.env.txt
-/src/scripts/aws-1.ipynb
-/src/scripts/gics_automated-1.ipynb
-/src/scripts/google-2.ipynb
-/src/scripts/google-ai-1.ipynb
-/src/scripts/gpt_agent-sentiment_analysis.ipynb
-/src/scripts/gpt_agent-sentiment_analysis-2.ipynb
-/src/scripts/gpt_agent-sentiment_analysis-3.ipynb
-/src/scripts/gpt_agent-strategic_report.ipynb
-/src/scripts/gpt_agent_dataframe.ipynb
-/src/scripts/gpt_agent_ratios.ipynb
-/src/scripts/jason_api-1.ipynb
-/src/scripts/ratios_db_population-6.ipynb
-/src/scripts/ratios_db_population-7.ipynb
-/src/scripts/risk_objects_gpt-1.ipynb
-/src/scripts/sec-edgar-1.ipynb
-/src/scripts/sec-edgar-2.ipynb
-/src/scripts/update_ixbrl_attrb.ipynb
-/src/scripts/update_ratiosdb_firstbatchofcompanies-7.ipynb
-/src/scripts/update_stocks_if_none.ipynb
-/src/scripts/xhtml-database_populate.ipynb
-/src/scripts/extracted_text.txt
