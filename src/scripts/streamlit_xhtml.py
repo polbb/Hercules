@@ -240,7 +240,7 @@ def streamlit_xhtml(company_number):
             y="wc_ratio",
             size="total_assets",
             color="cash_ratio",
-            hover_name="companyID",
+            hover_name="turnover",  # Corrected hover_name to a valid column
             log_x=True,
             size_max=60,
         )
