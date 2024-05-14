@@ -159,7 +159,7 @@ def streamlit_xhtml(company_number):
     ########################################
     # New Container BOS
     ########################################
-
+    st.divider()
 
     with st.container(border=True):
         # st.header('Business Operations Score')
@@ -172,7 +172,8 @@ def streamlit_xhtml(company_number):
     # TABS
     ########################################
 
-
+    st.divider()
+    
     tab1, tab2, tab3, tab4 = st.tabs(["Analysis", "Data", "Plots", "Veracity"])
 
     with tab4:
