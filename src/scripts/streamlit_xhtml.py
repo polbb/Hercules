@@ -1,4 +1,5 @@
 import plotly.express as px
+import plotly.figure_factory as ff
 
 from agents import *
 from benford import *
@@ -203,7 +204,35 @@ def streamlit_xhtml(company_number):
 
         st.area_chart(dataframe)
 
+    with st.container(border=True):
+        # st.header('Business Operations Score')
+        st.markdown(
+                f"<span style='color: white; font-size: 60px;'>Chart</span>",
+                unsafe_allow_html=True)
+        
+        # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
 
+        st.area_chart(dataframe)
+        
+
+        # Add histogram data
+        x1 = np.random.randn(200) - 2
+        x2 = np.random.randn(200)
+        x3 = np.random.randn(200) + 2
+
+        # Group data together
+        hist_data = [x1, x2, x3]
+
+        group_labels = ['Group 1', 'Group 2', 'Group 3']
+
+        # Create distplot with custom bin_size
+        fig = ff.create_distplot(
+                hist_data, group_labels, bin_size=[.1, .25, .5])
+
+        # Plot!
+        st.plotly_chart(fig, use_container_width=True)
+
+        
 
 
     ########################################
