@@ -155,7 +155,8 @@ def streamlit_xhtml(company_number):
                 f"<span style='color: green; font-size: 30px;'>Comparison Research Set (Comps) = {n} SME Companies</span>",
                 unsafe_allow_html=True)
 
-    st.container('Business Operation Score', border=True)
+    with st.container(border=True):
+        st.header('Business Operations Score')
 
     tab1, tab2, tab3, tab4 = st.tabs(["Analysis", "Data", "Plots", "Veracity"])
 
