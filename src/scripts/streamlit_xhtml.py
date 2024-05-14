@@ -212,15 +212,15 @@ def streamlit_xhtml(company_number):
         
         # Assuming 'dataframe' has columns 'fixed_assets', 'stocks', 'current_assets' for histogram data
         hist_data = [
-            dataframe['fixed_assets'].dropna(), 
-            dataframe['stocks'].dropna(), 
-            dataframe['current_assets'].dropna()
+            dataframe['fixed_assets'].dropna().values, 
+            dataframe['stocks'].dropna().values, 
+            dataframe['current_assets'].dropna().values
         ]
         group_labels = ['Fixed Assets', 'Stocks', 'Current Assets']
 
         # Create distplot with custom bin_size
         fig = ff.create_distplot(
-                hist_data, group_labels, bin_size=[.1, .25, .5])
+                hist_data, group_labels, bin_size=[.1, .25, .5], show_hist=False)
 
         # Plot!
         st.plotly_chart(fig, use_container_width=True)
