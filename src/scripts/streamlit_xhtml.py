@@ -164,7 +164,7 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
         # st.header('Business Operations Score')
         st.markdown(
-                f"<span style='color: green; font-size: 40px;'>Business Operations Score</span>",
+                f"<span style='color: white; font-size: 50px;'>Business Operations Score</span>",
                 unsafe_allow_html=True)
         
 
@@ -173,7 +173,7 @@ def streamlit_xhtml(company_number):
     ########################################
 
     st.divider()
-    
+
     tab1, tab2, tab3, tab4 = st.tabs(["Analysis", "Data", "Plots", "Veracity"])
 
     with tab4:
