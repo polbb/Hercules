@@ -207,19 +207,12 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
         # st.header('Business Operations Score')
         st.markdown(
-                f"<span style='color: white; font-size: 40px;'>Char 2</span>",
+                f"<span style='color: white; font-size: 40px;'>Asset Distribution Histogram</span>",
                 unsafe_allow_html=True)
         
-
-        # Add histogram data
-        x1 = np.random.randn(200) - 2
-        x2 = np.random.randn(200)
-        x3 = np.random.randn(200) + 2
-
-        # Group data together
-        hist_data = [x1, x2, x3]
-
-        group_labels = ['Group 1', 'Group 2', 'Group 3']
+        # Assuming 'dataframe' has columns 'fixed_assets', 'stocks', 'current_assets' for histogram data
+        hist_data = [dataframe['fixed_assets'], dataframe['stocks'], dataframe['current_assets']]
+        group_labels = ['Fixed Assets', 'Stocks', 'Current Assets']
 
         # Create distplot with custom bin_size
         fig = ff.create_distplot(
@@ -227,7 +220,6 @@ def streamlit_xhtml(company_number):
 
         # Plot!
         st.plotly_chart(fig, use_container_width=True)
-
     with st.container(border=True):
         # st.header('Scatter Plot: Turnover vs Working Capital Ratio')
         st.markdown(
