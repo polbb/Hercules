@@ -161,7 +161,7 @@ def streamlit_xhtml(company_number):
     ########################################
     st.divider()
 
-    dummy_value = 250
+    dummy_value = 684
     dummy_delta = '⬆︎5%'
 
     with st.container(border=True):
