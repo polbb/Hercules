@@ -174,14 +174,16 @@ def streamlit_xhtml(company_number):
         col1, col2 = st.columns(2)
 
         with col1:
-            st.markdown(
-                f"<span style='color: white; font-size: 80px;'>{dummy_value}</span>",
-                unsafe_allow_html=True)
+            with st.container():
+                st.markdown(
+                    f"<span style='color: white; font-size: 80px;'>{dummy_value}</span>",
+                    unsafe_allow_html=True)
 
         with col2:
-            st.markdown(
-                f"<span style='color: green; font-size: 80px;'>{dummy_delta}</span>",
-                unsafe_allow_html=True)
+            with st.container():
+                st.markdown(
+                    f"<span style='color: green; font-size: 80px;'>{dummy_delta}</span>",
+                    unsafe_allow_html=True)
         
 
     ########################################
