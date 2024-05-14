@@ -409,8 +409,8 @@ def streamlit_xhtml(company_number):
 
     with st.sidebar:
         st.title('Sentiment')
-        # text = sentiment_analysis()
-        # st.write(text)
+        text = sentiment_analysis()
+        st.write(text)
 
         # generate()
 
@@ -418,13 +418,13 @@ def streamlit_xhtml(company_number):
 
         st.title('Comparative Analysis')
 
-        # analyse_metrics(
-        #     companyID=company_number,
-        #     metrics=dataframe.loc[company_number],
-        #     n=n,
-        #     stats=statistics
-        #     # stats=statistics['itr_ratio']
-        # )
+        analyse_metrics(
+            companyID=company_number,
+            metrics=dataframe.loc[company_number],
+            n=n,
+            stats=statistics
+            # stats=statistics['itr_ratio']
+        )
 
         # save file to db
 
