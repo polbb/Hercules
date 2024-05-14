@@ -162,7 +162,7 @@ def streamlit_xhtml(company_number):
     ########################################
     st.divider()
 
-    dummy_value = 684
+    dummy_value = 783
     dummy_delta = '⬆︎5%'
 
     with st.container(border=True):
@@ -231,7 +231,7 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
         # st.header('Scatter Plot: Turnover vs Working Capital Ratio')
         st.markdown(
-                f"<span style='color: white; font-size: 40px;'>Turnover vs WC Ratio</span>",
+                f"<span style='color: white; font-size: 40px;'>Scatter Plot: Turnover vs WC Ratio</span>",
                 unsafe_allow_html=True)
         
         fig = px.scatter(
