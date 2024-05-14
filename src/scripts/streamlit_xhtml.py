@@ -196,7 +196,7 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
         # st.header('Business Operations Score')
         st.markdown(
-                f"Graphs",
+                f"*Graphs",
                 unsafe_allow_html=True)
 
 
