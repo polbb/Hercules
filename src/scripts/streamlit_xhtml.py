@@ -155,11 +155,23 @@ def streamlit_xhtml(company_number):
                 f"<span style='color: green; font-size: 30px;'>Comparison Research Set (Comps) = {n} SME Companies</span>",
                 unsafe_allow_html=True)
 
+
+    ########################################
+    # New Container BOS
+    ########################################
+
+
     with st.container(border=True):
         # st.header('Business Operations Score')
         st.markdown(
-                f"<span style='color: green; font-size: 30px;'>Business Operations Score</span>",
+                f"<span style='color: green; font-size: 40px;'>Business Operations Score</span>",
                 unsafe_allow_html=True)
+        
+
+    ########################################
+    # TABS
+    ########################################
+
 
     tab1, tab2, tab3, tab4 = st.tabs(["Analysis", "Data", "Plots", "Veracity"])
 
@@ -317,8 +329,8 @@ def streamlit_xhtml(company_number):
 
     with st.sidebar:
         st.title('Sentiment')
-        text = sentiment_analysis()
-        st.write(text)
+        # text = sentiment_analysis()
+        # st.write(text)
 
         # generate()
 
@@ -326,13 +338,13 @@ def streamlit_xhtml(company_number):
 
         st.title('Comparative Analysis')
 
-        analyse_metrics(
-            companyID=company_number,
-            metrics=dataframe.loc[company_number],
-            n=n,
-            stats=statistics
-            # stats=statistics['itr_ratio']
-        )
+        # analyse_metrics(
+        #     companyID=company_number,
+        #     metrics=dataframe.loc[company_number],
+        #     n=n,
+        #     stats=statistics
+        #     # stats=statistics['itr_ratio']
+        # )
 
         # save file to db
 
