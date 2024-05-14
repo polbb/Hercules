@@ -197,7 +197,7 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
 
         st.markdown(
-                f"<span style='color: white; font-size: 40px;'>Financial Data Area Chart</span>",
+                f"<span style='color: white; font-size: 40px;'>BRX Dimension 1</span>",
                 unsafe_allow_html=True)
         
         # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
@@ -207,7 +207,7 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
 
         st.markdown(
-                f"<span style='color: white; font-size: 40px;'>Asset Distribution Histogram</span>",
+                f"<span style='color: white; font-size: 40px;'>BRX Dimension 2</span>",
                 unsafe_allow_html=True)
         
         # Assuming 'dataframe' has columns 'fixed_assets', 'stocks', 'current_assets' for histogram data
@@ -228,7 +228,7 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
         # st.header('Scatter Plot: Turnover vs Working Capital Ratio')
         st.markdown(
-                f"<span style='color: white; font-size: 40px;'>Scatter Plot: Turnover vs WC Ratio</span>",
+                f"<span style='color: white; font-size: 40px;'>BRX Dimension 3</span>",
                 unsafe_allow_html=True)
         
         fig = px.scatter(
