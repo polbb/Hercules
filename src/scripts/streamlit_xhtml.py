@@ -189,6 +189,20 @@ def streamlit_xhtml(company_number):
         
 
     ########################################
+    # Graphs
+    ########################################
+    st.divider()
+
+    with st.container(border=True):
+        # st.header('Business Operations Score')
+        st.markdown(
+                f"Graphs",
+                unsafe_allow_html=True)
+
+
+
+
+    ########################################
     # TABS
     ########################################
 
