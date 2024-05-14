@@ -199,9 +199,9 @@ def streamlit_xhtml(company_number):
                 f"<span style='color: white; font-size: 60px;'>Chart</span>",
                 unsafe_allow_html=True)
         
-        chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
+        # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
 
-        st.area_chart(chart_data)
+        st.area_chart(dataframe)
 
 
 
