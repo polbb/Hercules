@@ -160,8 +160,10 @@ def streamlit_xhtml(company_number):
     # New Container BOS
     ########################################
     st.divider()
+
     dummy_value = 250
     dummy_delta = '⬆︎5%'
+
     with st.container(border=True):
         # st.header('Business Operations Score')
         st.markdown(
@@ -174,7 +176,7 @@ def streamlit_xhtml(company_number):
                 unsafe_allow_html=True)
         
         st.markdown(
-                f"<span style='color: green; font-size: 80px;'>{dummy_delta}</span>",
+                f"<span style='color: green; font-size: 30px;'>{dummy_delta}</span>",
                 unsafe_allow_html=True)
         
 
