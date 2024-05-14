@@ -229,9 +229,9 @@ def streamlit_xhtml(company_number):
         st.plotly_chart(fig, use_container_width=True)
 
     with st.container(border=True):
-        # st.header('Business Operations Score')
+        # st.header('Scatter Plot: Turnover vs Working Capital Ratio')
         st.markdown(
-                f"<span style='color: white; font-size: 40px;'>Char 2</span>",
+                f"<span style='color: white; font-size: 40px;'>Turnover vs WC Ratio</span>",
                 unsafe_allow_html=True)
         
         fig = px.scatter(
