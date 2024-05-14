@@ -234,11 +234,8 @@ def streamlit_xhtml(company_number):
                 f"<span style='color: white; font-size: 40px;'>Char 2</span>",
                 unsafe_allow_html=True)
         
-
-        df = px.data.gapminder()
-
         fig = px.scatter(
-            df.query("year==2007"),
+            dataframe,
             x="gdpPercap",
             y="lifeExp",
             size="pop",
@@ -247,11 +244,7 @@ def streamlit_xhtml(company_number):
             log_x=True,
             size_max=60,
         )
-
-        # tab1, tab2 = st.tabs(["Streamlit theme (default)", "Plotly native theme"])
-
-            # Use the Streamlit theme.
-            # This is the default. So you can also omit the theme argument.
+ 
         st.plotly_chart(fig, theme="streamlit", use_container_width=True)
 
         
