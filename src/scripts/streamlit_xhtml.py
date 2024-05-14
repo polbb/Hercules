@@ -164,8 +164,10 @@ def streamlit_xhtml(company_number):
     with st.container(border=True):
         # st.header('Business Operations Score')
         st.markdown(
-                f"<span style='color: white; font-size: 60px;'>Business Operations Score</span>",
+                f"<span style='color: white; font-size: 50px;'>Business Operations Score</span>",
                 unsafe_allow_html=True)
+        
+        st.metric('BOS', 250, delta=30)
         
 
     ########################################
