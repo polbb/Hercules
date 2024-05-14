@@ -169,7 +169,7 @@ def streamlit_xhtml(company_number):
         
         # st.metric('BOS', 250, delta=30)
         st.markdown(
-                f"<span style='color: white; font-size: 30px;'>{dummy_value}</span>",
+                f"<span style='color: white; font-size: 80px;'>{dummy_value}</span>",
                 unsafe_allow_html=True)
         
 
