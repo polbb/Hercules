@@ -195,9 +195,9 @@ def streamlit_xhtml(company_number):
     st.divider()
 
     with st.container(border=True):
-        # st.header('Business Operations Score')
+
         st.markdown(
-                f"<span style='color: white; font-size: 40px;'>Chart</span>",
+                f"<span style='color: white; font-size: 40px;'>Financial Data Area Chart</span>",
                 unsafe_allow_html=True)
         
         # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
