@@ -162,8 +162,16 @@ def streamlit_xhtml(company_number):
     ########################################
     st.divider()
 
-    dummy_value = 783
-    dummy_delta = '⬆︎5%'
+    import random
+
+    dummy_value = random.randint(750, 900)
+    delta_value = random.uniform(-5, 5)
+    if delta_value < 0:
+        dummy_delta = f'⬇︎{abs(delta_value):.1f}%'
+        delta_color = 'red'
+    else:
+        dummy_delta = f'⬆︎{delta_value:.1f}%'
+        delta_color = 'green'
 
     with st.container(border=True):
         # st.header('Business Operations Score')
