@@ -23,51 +23,6 @@ def streamlit_xhtml(company_number):
     # GET FINANCIAL INDICATORS
     left = 25
     right = 25
-    """with st.spinner("Calculating Cost of Sales Value..."):
-        try:
-            file_path = f"xhtml/{file_path}"
-            cogs = get_cogs_xhtml(
-                client, number_of_iterations=iterations, file_path=file_path
-            )
-
-            if not isinstance(cogs, int):
-                st.warning(
-                    "Error retrieving the value: Please start the process again. COGS"
-                )
-                st.stop()
-
-            cogs_formatted = format_currency(cogs)
-            st.text(f"{'Cost of Sales:':<{left}}          {cogs_formatted:>{right}}")
-            # st.text(f"Cost of Sales:          {cogs_formatted}")
-            
-
-        except Exception as e:
-            st.write(f"Error occurred during Cost of Sales calculation: {e}")
-            st.warning(
-                "Error retrieving the value: Please start the process again. COGS2"
-            )
-            st.stop()
-"""
-    """with st.spinner("Calculating Stocks Value..."):
-        try:
-            stocks = get_inventory_xhtml(
-                client, number_of_iterations=iterations, file_path=file_path
-            )
-            if not isinstance(stocks, int):
-                st.warning("Please start the process again. STOCKS")
-                st.stop()
-            if stocks == 0:
-                st.warning("Stocks value was zero and the calculations cannot be done.")
-                st.stop()
-
-            stocks_formatted = format_currency(stocks)
-            # st.text(f"Stocks:                 {stocks_formatted}")
-            st.text(f"{'Stocks:':<{left}}          {stocks_formatted:>{right}}")
-
-        except Exception as e:
-            st.write(f"Error occurred during Stocks calculation: {e}")
-            st.warning("Please start the process again. STOCKS2")
-            st.stop()"""
 
     table = "company_ratios"
 
